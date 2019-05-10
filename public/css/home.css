@@ -1,0 +1,22 @@
+.carousel-inner {
+    z-index: 0;
+}
+
+.branding {
+    text-align: center;
+    position: absolute;
+    color: white;
+    top: 30%;
+    left: 50%;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+}
+
+.btn-feature {
+    color: #eee;
+    border-color: #eee;
+}
+
+.btn-feature:hover {
+    background-color: #eee;
+}
