@@ -20,3 +20,12 @@
 .btn-feature:hover {
     background-color: #eee;
 }
+
+.business {
+    padding: 30px;
+    color: #eee;
+    background-color: #343a40;
+}
+
+.blog, .news {
+}
