@@ -1,0 +1,41 @@
+.btn-add-to-cart {
+    border-color: #f4a641;
+    color: #f4a641;
+}
+
+.btn-detail {
+    border-color:#42a1f4;
+    color: #42a1f4;
+}
+
+.btn-add-to-cart:hover {
+    background-color: #f4a641;
+    color: #fff;
+}
+
+.btn-detail:hover {
+    background-color: #42a1f4;
+    color: #fff;
+}
+
+.product-display {
+    border-radius: 10px;
+    padding: 1em;
+    border: 1px solid #47494c;
+}
+
+.product-quantity {
+    font-weight: bold;
+}
+
+.instock {
+    color: #35b724;
+    font-weight: bold;
+    font-size: 1.4em;
+}
+
+.outofstock {
+    color: #db2915;
+    font-weight: bold;
+    font-size: 1.4em;
+}

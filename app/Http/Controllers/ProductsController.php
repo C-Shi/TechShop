@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\Category;
 
 class ProductsController extends Controller
 {
@@ -15,8 +16,14 @@ class ProductsController extends Controller
     public function index()
     {
         //
-        $products = Product::all();
-        return view('products.index')->with('products', $products);
+        $categories = Category::all();
+        if (isset($_GET['category_id'])) {
+            $cat_id = $_GET['category_id'];
+            $products = Product::where('category_id', '=', $cat_id)->get();
+        } else {
+            $products = Product::all();
+        }
+        return view('products.index')->with(['products' => $products, 'categories' => $categories]);
     }
 
     /**
@@ -49,6 +56,8 @@ class ProductsController extends Controller
     public function show($id)
     {
         //
+        $product = Product::find($id);
+        return view('products.show')->with('product', $product);
     }
 
     /**
