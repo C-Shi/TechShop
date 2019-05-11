@@ -16,5 +16,29 @@
             <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Blog</a>
         </li>
         </ul>
+
+        <div>
+            @if(Auth::guest())
+                <a class="text-white nav-link d-inline" href="/login">Login</a>
+                <a class="text-white nav-link d-inline" href="/register">Register</a>
+            @else
+            <span class="dropdown">
+                <a class="nav-link dropdown-toggle text-white" style="display:inline" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Welcome! {{Auth::user()->name}}
+                </a>
+                <div class="dropdown-menu text-left" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#">Cart</a>
+                    <a class="dropdown-item" href="#">Account</a>
+                    <hr>
+                    <div class="dropdown-item">
+                        <form class="form-inline" action="/logout" method="POST">
+                            <button class="btn-logout">Logout</button>
+                            @csrf
+                        </form>
+                    </div>
+                </div>
+            <span>
+            @endif
+        </div>
     </div>
 </nav>
