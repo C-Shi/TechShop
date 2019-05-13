@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use App\Product;
-use App\Order;
 use App\OrderLine;
 
-class UserController extends Controller
+class OrderlineController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -28,8 +25,6 @@ class UserController extends Controller
     public function create()
     {
         //
-        echo "helloe";
-        return "view";
     }
 
     /**
@@ -83,31 +78,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($user_id, $order_id, $product_id)
     {
         //
-    }
+        $order_line = OrderLine::where([['order_id', $order_id], ['product_id', $product_id]]);
+        $order_line->delete();
 
-    public function cart(Request $request, $id){
-        $cart = Order::where([
-            ['user_id', '=', $id],
-            ['status', '=', 'pending']
-            ])->first();
-
-        if(!$cart) {
-            $cart = new Order;
-            $cart->user_id = $id;
-            $cart->order_number = (string) Str::uuid();
-            $cart->status = 'pending';
-            $cart->save();
-            $cart = Order::where([
-                ['user_id', '=', $id],
-                ['status', '=', 'pending']
-                ])->first();
-        }
-
-        $order_number = $cart->order_number;
-
-        return view('user.cart')->with('cart', $cart);
+        return redirect('/users/'. $user_id .'/cart');
     }
 }

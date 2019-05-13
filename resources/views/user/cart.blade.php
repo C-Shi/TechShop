@@ -32,7 +32,13 @@
                             <td>{{$order_line->quantity}}</td>
                             <td>{{$order_line->product->format_price($order_line->quantity) }}</td>
                             <td>
-                                <button class="btn btn-danger btn-sm" data-order-number={{$cart->order_number}} data-item={{$order_line->product->id}}>Remove</button>
+                            {{-- <form action="users/{{Auth::user()->id}}/orders/{{$cart->id}}" action="POST"> --}}
+                            <form action="{{ route('delete_item', [Auth::user()->id, $cart->id, $order_line->product->id]) }}" method="POST">
+                                    <input type="hidden" name="product_id" value={{$order_line->product->id}}>
+                                    {{ method_field('DELETE')}}
+                                    {{ csrf_field() }}
+                                    <input type="submit" class="btn btn-danger btn-sm" value="Delete"/>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
@@ -60,6 +66,5 @@
     </div>
     @endif
 </div>
-
 
 @include('include.footer')

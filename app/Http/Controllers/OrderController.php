@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Order;
+use App\OrderLine;
 
 class OrderController extends Controller
 {
@@ -11,7 +13,7 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($user_id)
     {
         //
     }
@@ -21,7 +23,7 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($user_id)
     {
         //
     }
@@ -32,7 +34,7 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($user_id, Request $request)
     {
         //
     }
@@ -57,6 +59,7 @@ class OrderController extends Controller
     public function edit($id)
     {
         //
+
     }
 
     /**
@@ -66,7 +69,7 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($user_id, $order_id, Request $request)
     {
         //
     }
