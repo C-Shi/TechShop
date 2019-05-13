@@ -27,7 +27,7 @@
                         Welcome! {{Auth::user()->name}}
                 </a>
                 <div class="dropdown-menu text-left" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Cart</a>
+                    <a class="dropdown-item" href="/users/{{Auth::user()->id}}/cart">Cart</a>
                     <a class="dropdown-item" href="#">Account</a>
                     <hr>
                     <div class="dropdown-item">
