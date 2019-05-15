@@ -20,6 +20,7 @@
                                 </div>
                             <h6>{{$product['name']}}</h6>
                             <p>{{$product->format_price()}}</p>
+                            {{-- add product to cart --}}
                             <button class="btn btn-sm btn-add-to-cart">Add To Cart</button>
                             <a href="/products/{{$product->id}}" class="btn btn-sm btn-detail">Details</a>
                             </div>

@@ -3,21 +3,36 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use App\Product;
 use App\Order;
-use App\OrderLine;
 
-class UserController extends Controller
+class CartController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index($user_id){
+        $cart = Order::where([
+            ['user_id', '=', $user_id],
+            ['status', '=', 'pending']
+            ])->first();
+
+        if(!$cart) {
+            $cart = new Order;
+            $cart->user_id = $id;
+            $cart->order_number = (string) Str::uuid();
+            $cart->status = 'pending';
+            $cart->save();
+            $cart = Order::where([
+                ['user_id', '=', $user_id],
+                ['status', '=', 'pending']
+                ])->first();
+        }
+
+        $order_number = $cart->order_number;
+
+        return view('user.cart')->with('cart', $cart);
     }
 
     /**
@@ -28,8 +43,6 @@ class UserController extends Controller
     public function create()
     {
         //
-        echo "helloe";
-        return "view";
     }
 
     /**
