@@ -21,7 +21,11 @@
                             <h6>{{$product['name']}}</h6>
                             <p>{{$product->format_price()}}</p>
                             {{-- add product to cart --}}
-                            <button class="btn btn-sm btn-add-to-cart">Add To Cart</button>
+                            <form action={{ route('add_item', [Auth::user()->id, $product->id])}} method="POST">
+                                <input type="hidden" name="quantity" value="1">
+                                @csrf
+                                <button class="btn btn-sm btn-add-to-cart">Add To Cart</button>
+                            </form>
                             <a href="/products/{{$product->id}}" class="btn btn-sm btn-detail">Details</a>
                             </div>
                         </div>

@@ -15,7 +15,9 @@ Route::get('/', 'HomeController@index');
 
 Route::resource('/products', 'ProductsController');
 
-Route::resource('users.cart', 'CartController');
+Route::get('/users/{user}/cart', 'CartController@index');
+Route::post('/users/{user}/cart/item/{item}', 'OrderlineController@store')->name('add_item');
+
 Route::delete('/users/{user}/orders/{order}/item/{item}', 'OrderlineController@destroy')->name('delete_item');
 
 Auth::routes();
