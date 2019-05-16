@@ -16,17 +16,21 @@
                         <div class="col-3 text-center">
                             <div class="product">
                                 <div class="product-img">
-                                    <img src="/storage/images/seeds/laptop.png" alt="">
+                                    <a href="/products/{{$product->id}}"><img src="/storage/images/seeds/laptop.png" alt=""></a>
                                 </div>
                             <h6>{{$product['name']}}</h6>
                             <p>{{$product->format_price()}}</p>
                             {{-- add product to cart --}}
-                            <form action={{ route('add_item', [Auth::user()->id, $product->id])}} method="POST">
+                            @if($product->stock > 0)
+                            <form action={{ route('add_item', [Auth::user()->id, $product->id])}} method="POST" class="d-inline">
                                 <input type="hidden" name="quantity" value="1">
                                 @csrf
                                 <button class="btn btn-sm btn-add-to-cart">Add To Cart</button>
+                                <a href="/products/{{$product->id}}" class="btn btn-sm btn-detail">Details</a>
                             </form>
-                            <a href="/products/{{$product->id}}" class="btn btn-sm btn-detail">Details</a>
+                            @else
+                            <div class="outofstock">Out Of Stock</div>
+                            @endif
                             </div>
                         </div>
                     @endforeach

@@ -23,15 +23,16 @@
                 </div>
 
                 {{-- add to cart form --}}
-                <form>
+                <form action={{route('add_item', [Auth::user()->id, $product->id])}} method="POST">
                     <div class="form-group">
                         <label for="">Quantity: </label>
-                        <select>
+                        <select name="quantity">
                             @for($i = 1; $i <= ($product->stock > 20 ? 20 : $product->stock); $i++)
                                 <option value="{{$i}}">{{$i}}</option>
                             @endfor
                         </select>
                     </div>
+                    @csrf
                     <button class="btn btn-add-to-cart btn-sm">Add to Cart</button>
                 </form>
             @else
