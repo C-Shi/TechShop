@@ -52,6 +52,45 @@ class UserController extends Controller
     public function show($id)
     {
         //
+        $page = 'Setting';
+        if(isset($_GET['page'])) {
+            $page = $_GET['page'];
+        }
+
+        switch ($page) {
+            case 'Order':
+                # code...
+                $content = $this->get_user_order_history($id);
+                break;
+
+            case 'Cart':
+                $content = $this->get_user_pending_order($id);
+                break;
+
+            case 'Customer Service':
+                $content = Null;
+                break;
+
+            default:
+                # code...
+                $content = $this->get_user_account();
+                break;
+        }
+        return view('user.account')->with(['page' => $page, 'content' => $content]);
+    }
+
+    protected function get_user_account() {
+        return \Auth::user();
+    }
+
+    protected function get_user_order_history($id){
+        return Order::where([['user_id', $id], ['status', '!=','pending']])->get();
+    }
+
+    protected function get_user_pending_order($id){
+        return Order::firstOrCreate(
+            ['user_id' => \Auth::user()->id, 'status' => 'pending']
+        );
     }
 
     /**

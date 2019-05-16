@@ -15,6 +15,7 @@ Route::get('/', 'HomeController@index');
 
 Route::resource('/products', 'ProductsController');
 
+Route::get('/users/{user}', 'UserController@show')->name('user');
 Route::get('/users/{user}/cart', 'CartController@index');
 Route::post('/users/{user}/cart/item/{item}', 'OrderlineController@store')->name('add_item');
 
