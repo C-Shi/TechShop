@@ -28,7 +28,7 @@
                 </a>
                 <div class="dropdown-menu text-left" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="/users/{{Auth::user()->id}}/cart">Cart</a>
-                    <a class="dropdown-item" href="#">Account</a>
+                    <a class="dropdown-item" href="{{ route('user', [Auth::user()->id]) }}">Account</a>
                     <hr>
                     <div class="dropdown-item">
                         <form class="form-inline" action="/logout" method="POST">

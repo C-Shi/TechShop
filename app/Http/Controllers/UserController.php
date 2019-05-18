@@ -96,6 +96,11 @@ class UserController extends Controller
         );
     }
 
+    public function contact(Request $request, $id)
+    {
+
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

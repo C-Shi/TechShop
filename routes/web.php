@@ -17,6 +17,7 @@ Route::resource('/products', 'ProductsController');
 
 Route::get('/users/{user}', 'UserController@show')->name('user');
 Route::get('/users/{user}/cart', 'CartController@index');
+Route::get('/users/{user}/contact', 'UserController@contact');
 Route::post('/users/{user}/cart/item/{item}', 'OrderlineController@store')->name('add_item');
 
 Route::delete('/users/{user}/orders/{order}/item/{item}', 'OrderlineController@destroy')->name('delete_item');

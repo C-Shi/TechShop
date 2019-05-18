@@ -20,7 +20,7 @@ class CartController extends Controller
 
         if(!$cart) {
             $cart = new Order;
-            $cart->user_id = $id;
+            $cart->user_id = $user_id;
             $cart->order_number = (string) Str::uuid();
             $cart->status = 'pending';
             $cart->save();

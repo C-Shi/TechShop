@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\OrderLine;
 use App\Order;
 
@@ -45,7 +46,7 @@ class OrderlineController extends Controller
 
         if(!$cart) {
             $cart = new Order;
-            $cart->user_id = $id;
+            $cart->user_id = $user_id;
             $cart->order_number = (string) Str::uuid();
             $cart->status = 'pending';
             $cart->save();
