@@ -20,7 +20,6 @@ class Email extends Mailable
     {
         //
         $this->customer = $customer;
-        var_dump($this->customer);
     }
 
     /**
@@ -30,6 +29,7 @@ class Email extends Mailable
      */
     public function build()
     {
+        // cannot use message as keyword because it is a reserved word
         return $this->view('email.contact')->with([
             'name' => $this->customer['name'],
             'email' => $this->customer['email'],
