@@ -20,6 +20,7 @@ class Email extends Mailable
     {
         //
         $this->customer = $customer;
+        var_dump($this->customer);
     }
 
     /**
@@ -29,6 +30,11 @@ class Email extends Mailable
      */
     public function build()
     {
-        return $this->view('email.contact')->with($customer);
+        return $this->view('email.contact')->with([
+            'name' => $this->customer['name'],
+            'email' => $this->customer['email'],
+            'subject' => $this->customer['subject'],
+            'bodyMessage' => $this->customer['message']
+        ]);
     }
 }
