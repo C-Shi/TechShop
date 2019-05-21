@@ -55,9 +55,10 @@
                         <td></td>
                         <td></td>
                         <td>
-                            <form action="" method="POST" class="form-inline">
-                                <button class="btn btn-success btn-sm">Checkout</button>
-                            </form>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#checkout">
+                                Checkout
+                            </button>
                         </td>
                     </tr>
                 </tbody>
@@ -66,5 +67,7 @@
     </div>
     @endif
 </div>
+
+@include('user.checkout')
 
 @include('include.footer')

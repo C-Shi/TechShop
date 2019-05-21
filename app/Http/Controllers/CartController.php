@@ -35,6 +35,27 @@ class CartController extends Controller
         return view('user.cart')->with('cart', $cart);
     }
 
+     /**
+     * Creating Charge
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    public function charge(Request $request, $user_id){
+        \Stripe\Stripe::setApiKey(env('STRIPE_KEY'));
+
+        // Token is created using Checkout or Elements!
+        // Get the payment token ID submitted by the form:
+        $token = $request['stripeToken'];
+        $charge = \Stripe\Charge::create([
+            'amount' => 999,
+            'currency' => 'cad',
+            'description' => 'Example charge',
+            'source' => $token,
+        ]);
+        return $request;
+    }
+
     /**
      * Show the form for creating a new resource.
      *
