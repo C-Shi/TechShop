@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Mail;
+use App\Mail\Email;
 use App\Product;
 use App\Order;
 use App\OrderLine;
@@ -98,7 +100,15 @@ class UserController extends Controller
 
     public function contact(Request $request, $id)
     {
+        $customer = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'subject' => $request->subject,
+            'message' => $request->message
+        ];
 
+        Mail::to($request->email)->send(new Email($customer));
+        return redirect()->back();
     }
 
     /**

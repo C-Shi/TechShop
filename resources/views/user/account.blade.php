@@ -78,7 +78,7 @@
 
                 {{-- customer service case --}}
                 @case('Customer Service')
-                    <form>
+                    <form method="POST" action="/users/{{Auth::user()->id}}/contact">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -114,6 +114,7 @@
                                         placeholder="Message"></textarea>
                                 </div>
                             </div>
+                            @csrf
                             <div class="col-md-12">
                                 <button type="submit" class="btn btn-primary pull-right" id="btnContactUs">
                                     Send Message</button>
