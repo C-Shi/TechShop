@@ -108,7 +108,7 @@ class UserController extends Controller
         ];
 
         Mail::to($request->email)->send(new Email($customer));
-        
+
         return redirect()->back()->with('success', 'Your Request Has Been Submitted');
     }
 

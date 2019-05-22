@@ -14,6 +14,7 @@
         </div>
 
         <div class="col-md-9">
+            @include('include.flash')
             @switch($page)
                 {{-- order case --}}
                 @case('Order')

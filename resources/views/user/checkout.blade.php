@@ -21,7 +21,7 @@
                   <!-- Used to display form errors. -->
                   <div id="card-errors" role="alert"></div>
                 </div>
-                <input type="hidden" name="order_number" value=>
+                <input type="hidden" name="order_number" value={{$cart->order_number}}>
                 @csrf
                 <button class="btn btn-primary">Pay</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

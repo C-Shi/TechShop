@@ -12,6 +12,7 @@
         </div>
     @else
     <div class="row">
+        @include('include.flash')
         {{$cart->order_number}}
         <div class="col-12">
             <table class="table">
