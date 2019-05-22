@@ -8,6 +8,8 @@ use App\OrderLine;
 class Order extends Model
 {
     //
+    protected $fillable = ['user_id', 'status', 'order_number'];
+
     public function order_line(){
         return $this->hasMany('App\OrderLine');
     }

@@ -94,7 +94,8 @@ class UserController extends Controller
 
     protected function get_user_pending_order($id){
         return Order::firstOrCreate(
-            ['user_id' => \Auth::user()->id, 'status' => 'pending']
+            ['user_id' => \Auth::user()->id, 'status' => 'pending'],
+            ['order_number' => (string) Str::uuid()]
         );
     }
 
