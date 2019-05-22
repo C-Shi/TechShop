@@ -61,7 +61,7 @@ class CartController extends Controller
             return redirect()->back()->with('error', 'Unable to find order');
         }
 
-        if(!$order->status != 'pending') {
+        if($order->status != 'pending') {
             return redirect()->back()->with('error', 'Invalid Order Status');
         }
 
@@ -73,7 +73,8 @@ class CartController extends Controller
         try {
             foreach($order->order_line as $order_line) {
                 if($order_line->product->stock - $order_line->quantity < 0) {
-                    throw new Exception('Insufficient Stock Quantity');
+                    $message = 'Insufficient Stock Quantity! The Max quantity you can order is ' . $order_line->product->stock;
+                    throw new Exception($message);
                 }
             }
         } catch(Exception $e) {
