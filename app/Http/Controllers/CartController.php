@@ -8,6 +8,7 @@ use App\Order;
 use App\User;
 use Mail;
 use App\Mail\OrderCompleted;
+use Exception;
 
 class CartController extends Controller
 {
@@ -60,11 +61,25 @@ class CartController extends Controller
             return redirect()->back()->with('error', 'Unable to find order');
         }
 
+        if(!$order->status != 'pending') {
+            return redirect()->back()->with('error', 'Invalid Order Status');
+        }
+
 
         if($order->user_id != $user_id) {
             return redirect()->back()->with('error', 'This is not your order');
         }
 
+        try {
+            foreach($order->order_line as $order_line) {
+                if($order_line->product->stock - $order_line->quantity < 0) {
+                    throw new Exception('Insufficient Stock Quantity');
+                }
+            }
+        } catch(Exception $e) {
+            $err = $e->getMessage();
+            return redirect()->back()->with('error', $err);
+        }
 
         try {
             $charge = \Stripe\Charge::create([
@@ -110,6 +125,11 @@ class CartController extends Controller
         // success redirect
         $order->status = 'paid';
         $order->save();
+
+        foreach($order->order_line as $order_line) {
+            $order_line->product->stock -= $order_line->quantity;
+            $order_line->product->save();
+        }
 
         $recipient = User::find($user_id);
 
