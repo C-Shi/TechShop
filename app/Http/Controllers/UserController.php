@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Mail;
-use App\Mail\Email;
+use App\Mail\ContactEmail;
 use App\Product;
 use App\Order;
 use App\OrderLine;
@@ -107,7 +107,7 @@ class UserController extends Controller
             'message' => $request->message
         ];
 
-        Mail::to($request->email)->send(new Email($customer));
+        Mail::to($request->email)->send(new ContactEmail($customer));
 
         return redirect()->back()->with('success', 'Your Request Has Been Submitted');
     }

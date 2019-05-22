@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class Email extends Mailable
+class OrderCompleted extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,9 +16,10 @@ class Email extends Mailable
      *
      * @return void
      */
-    public function __construct($customer)
+    public function __construct($order, $customer)
     {
         //
+        $this->order = $order;
         $this->customer = $customer;
     }
 
@@ -29,12 +30,9 @@ class Email extends Mailable
      */
     public function build()
     {
-        // cannot use message as keyword because it is a reserved word
-        return $this->view('email.contact')->with([
-            'name' => $this->customer['name'],
-            'email' => $this->customer['email'],
-            'subject' => $this->customer['subject'],
-            'bodyMessage' => $this->customer['message']
+        return $this->view('email.receipt')->with([
+            'order' => $this->order,
+            'customer' => $this->customer
         ]);
     }
 }

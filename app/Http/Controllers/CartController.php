@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Order;
+use App\User;
+use Mail;
+use App\Mail\OrderCompleted;
 
 class CartController extends Controller
 {
@@ -107,6 +110,10 @@ class CartController extends Controller
         // success redirect
         $order->status = 'paid';
         $order->save();
+
+        $recipient = User::find($user_id);
+
+        Mail::to($recipient->email)->send(new OrderCompleted($order, $recipient));
         return redirect('/users/' . $user_id . '?page=Order')->with('success', 'Your Payment Will Be Processed');
     }
 
