@@ -4,17 +4,15 @@
 <div class="container">
     @if(count($cart->order_line) === 0)
         <div class="jumbotron">
-            <h1 class="display-4">Hello, world!</h1>
-            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+            <h1 class="display-4">Your Cart is empty!</h1>
+            <p class="lead">TechShop is a leading online E-commerce business for technical hardware. We sell all categories of electronics with the bese price.</p>
             <hr class="my-4">
-            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+            <a class="btn btn-primary btn-lg" href="/products" role="button">To Shop</a>
         </div>
     @else
     <div class="row">
-        @include('include.flash')
-        {{$cart->order_number}}
         <div class="col-12">
+            @include('include.flash')
             <table class="table">
                 <thead>
                     <tr>
