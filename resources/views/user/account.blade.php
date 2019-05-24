@@ -128,9 +128,9 @@
                     @break
 
                 {{-- account setting case --}}
-
+                {{-- update user profile --}}
                 @default
-                    <form>
+                    <form action="{{ route('update_profile', [Auth::user()->id])}}" method="POST">
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="">Name</label>
@@ -143,29 +143,31 @@
                         </div>
                         <div class="form-group">
                             <label for="inputAddress">Address</label>
-                            <input type="text" class="form-control editable" id="inputAddress" placeholder="1234 Main St" disabled>
+                            <input type="text" class="form-control editable" name="address" id="inputAddress" placeholder="1234 Main St" disabled>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputCity">City</label>
-                                <input type="text" class="form-control editable" id="inputCity" disabled>
+                                <input type="text" name="city" class="form-control editable" value={{$content->city}} id="inputCity" disabled>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputState">Province</label>
-                                <select id="inputState" class="form-control editable" disabled>
-                                    <option>Alberta</option>
-                                    <option>British Columba</option>
-                                    <option>Manitoba</option>
-                                    <option>Saskatchewan</option>
-                                    <option>Ontario</option>
-                                    <option>Quebec</option>
+                                <select id="inputState" name="province" class="form-control editable" disabled>
+                                    @foreach (['Alberta', 'British Columba', 'Manitoba', 'Saskatchewan', 'Ontario', 'Quebec'] as $province)
+                                        @if($content->province == $province)
+                                            <option value="{{$province}}" selected>{{$province}}</option>
+                                        @else
+                                            <option value="{{$province}}">{{$province}}</option>
+                                        @endif
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="inputZip">Zip</label>
-                                <input type="text" class="form-control editable" id="inputZip" disabled>
+                                <input type="text" name="zip" class="form-control editable" id="inputZip" value="{{ $content->zip }}" disabled>
                             </div>
                         </div>
+                        {{ method_field('PUT') }}
                         @csrf
                         <button type="button" class="btn btn-secondary btn-sm" id="edit-profile">Edit Profile</button>
                         <button type="submit" class="btn btn-sm btn-success d-none" id="submit">Update</button>

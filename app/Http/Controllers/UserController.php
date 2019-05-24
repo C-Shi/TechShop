@@ -9,6 +9,7 @@ use App\Mail\ContactEmail;
 use App\Product;
 use App\Order;
 use App\OrderLine;
+use App\User;
 
 class UserController extends Controller
 {
@@ -134,6 +135,18 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        // should add validation to it
+
+        $user = User::find($id);
+
+        $user->name = $request['name'];
+        $user->address = $request['address'];
+        $user->city = $request['city'];
+        $user->province = $request['province'];
+        $user->zip = $request['zip'];
+        $user->save();
+
+        return $request;
     }
 
     /**
