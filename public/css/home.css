@@ -1,3 +1,7 @@
+body {
+    background: #e4e5e6;
+}
+
 .carousel-inner {
     z-index: 0;
 }
@@ -32,4 +36,23 @@
     border: 0px;
     text-align: left;
     padding-left:0;
+}
+
+.feature-product {
+    margin-top: 1em;
+}
+
+.product-box {
+    padding-right: 35px;
+    padding-left: 35px;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    background: #fff;
+    box-shadow: 3px 3px 2px 2px #c6c8ca;
+}
+
+.product-box hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }

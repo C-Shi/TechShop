@@ -20,7 +20,13 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container product-box">
+    <div class="row">
+        <h3 class="feature-product">Feature Products
+                <small><a class="btn btn-link" href="/products">See More</a></small>
+        <h3>
+    </div>
+    <hr>
     <div class="row">
         {{-- feature product section --}}
         @foreach ($products as $product)
