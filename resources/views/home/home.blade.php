@@ -3,9 +3,9 @@
 
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="branding">
-        <h1>TechStyle Shop</h1>
+        <p id="shop-name">TechStyle Shop</p>
         <a class="btn btn-feature" href="/">Blog</a>
-        <a class="btn btn-feature" href="/">New Arrival</a>
+        <a class="btn btn-feature" id="to-feature" href="/">New Arrival</a>
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active">
