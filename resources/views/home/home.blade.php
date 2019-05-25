@@ -45,7 +45,7 @@
 
 {{-- business introduction --}}
 <div class="container-fluid footer-container">
-    <button class="btn btn-block">Back To Top</button>
+    <button class="btn btn-block" id="back-to-top">Back To Top</button>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -90,4 +90,5 @@
     </div>
 </div>
 
+<script src="/js/home.js"></script>
 @include('include.footer')
