@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Ranga&display=swap');
+
+.side-bar ul{
+    position: relative;
+    left: 2em;
+    top: 2em;
+    list-style-type: none;
+}
+
+.side-bar ul li {
+    line-height: 3.5em;
+}
+
+.side-bar .category {
+    font-family: 'Ranga', cursive;
+    font-size: 1.7em;
+    color: #212529;
+}
+
+.side-bar .category:hover {
+    font-weight: bold;
+    transition: font-weight .3s;
+    text-decoration: none;
+}
+
+.side-bar i {
+    text-align: center;
+    width: 1.3em;
+}
+
+.right-arrow {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: .7em;
+}
+
+
+
