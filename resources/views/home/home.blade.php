@@ -44,25 +44,48 @@
 </div>
 
 {{-- business introduction --}}
-<div class="container-fluid">
-    <div class="row">
-    <div class="col-12 business">
-        <h2>About Our Business</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eleifend eget ex eu mattis. Cras pharetra velit rutrum felis fermentum volutpat. Quisque tincidunt ornare justo, in pharetra purus rhoncus at. Suspendisse et enim mi. Ut eu posuere lorem. Aenean congue tempor sollicitudin. Cras in iaculis quam, non eleifend est. Curabitur vel fermentum neque. Fusce finibus urna ac mi feugiat bibendum. Pellentesque gravida lorem semper, condimentum odio id, ullamcorper ex. Nunc non convallis neque. In ac arcu venenatis, sodales massa a, viverra nibh. Aliquam non ligula at quam laoreet dapibus. Donec pulvinar nibh eget lacus euismod ultrices ac quis augue.</p>
-
-        <p>Aenean eu erat est. Sed eu risus rhoncus, vulputate nibh sed, gravida turpis. Maecenas tincidunt diam velit, sed finibus risus efficitur in. Aliquam condimentum nunc eget ex vulputate bibendum. Vestibulum eget mollis turpis. Sed at mollis ligula. In laoreet sit amet erat vel dignissim. Maecenas quis nisl sapien. Sed urna dui, elementum at tincidunt non, aliquet sed dolor. Nam commodo sollicitudin leo sed viverra. Nam laoreet ac massa nec tempor. Donec id accumsan eros, nec convallis felis.</p>
-    </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 blog">
-            blogs
+<div class="container-fluid footer-container">
+    <button class="btn btn-block">Back To Top</button>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <ul class="footer-list">
+                    <li><h5 class="footer-subtitle">Know Our Business</h5></li>
+                    <li class="footer-list-item">Our Business</li>
+                    <li class="footer-list-item">Board of Dirctor</li>
+                    <li class="footer-list-item">Shipping Partner</li>
+                    <li class="footer-list-item">Refund Policy</li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <ul class="footer-list">
+                    <li><h5 class="footer-subtitle">Earn With Us</h5></li>
+                    <li class="footer-list-item">Career</li>
+                    <li class="footer-list-item">Affiliate Program</li>
+                    <li class="footer-list-item">Investor Relation</li>
+                    <li class="footer-list-item">Cash Back Program</li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <ul class="footer-list">
+                    <li><h5 class="footer-subtitle">Let Us Help You</h5></li>
+                    <li class="footer-list-item">Customer Service</li>
+                    <li class="footer-list-item">Warehouse Location</li>
+                    <li class="footer-list-item">Shipping Rate & Service</li>
+                    <li class="footer-list-item">Become a seller</li>
+                </ul>
+            </div>
         </div>
 
-        <div class="col-md-6 news">
-            News
+        <div class="row">
+            <div class="col-md-8 offset-md-2 icon-box">
+                <i class="fab fa-instagram fa-3x"></i>
+                <i class="fab fa-facebook-square fa-3x"></i>
+                <i class="fab fa-linkedin fa-3x"></i>
+                <i class="fab fa-alipay fa-3x"></i>
+                <i class="fab fa-amazon-pay fa-3x"></i>
+                <i class="fab fa-cc-paypal fa-3x"></i>
+            </div>
         </div>
     </div>
 </div>

@@ -25,12 +25,6 @@ body {
     background-color: #eee;
 }
 
-.business {
-    padding: 30px;
-    color: #eee;
-    background-color: #343a40;
-}
-
 .btn-logout {
     background: transparent;
     border: 0px;
@@ -55,4 +49,39 @@ body {
     border: 0;
     height: 1px;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+.footer-container {
+    background: #232425;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.footer-container button {
+    color: #fff;
+    border-radius: 0;
+    margin: 0;
+    background: #4e4e4e;
+    margin-bottom: 2em;
+}
+
+.footer-list {
+    list-style-type: none;
+    color: #fff;
+}
+
+.footer-list-item:hover {
+    cursor: pointer;
+    font-weight: bold;
+    transition: font-weight .3s;
+}
+
+.footer-container i {
+    color: white;
+    padding-bottom: 3em;
+}
+
+.icon-box {
+    display:flex;
+    justify-content: space-around;
 }
