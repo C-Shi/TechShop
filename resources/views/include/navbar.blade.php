@@ -27,6 +27,9 @@
                         Welcome! {{Auth::user()->name}}
                 </a>
                 <div class="dropdown-menu text-left" aria-labelledby="navbarDropdownMenuLink">
+                    @if(Auth::user()->admin)
+                    <a class="dropdown-item" href="/admin/{{Auth::user()->id}}">Admin</a>
+                    @endif
                     <a class="dropdown-item" href="/users/{{Auth::user()->id}}/cart">Cart</a>
                     <a class="dropdown-item" href="{{ route('user', [Auth::user()->id]) }}">Account</a>
                     <hr>

@@ -26,4 +26,7 @@ Route::post('/users/{user}/cart/item/{item}', 'OrderlineController@store')->name
 
 Route::delete('/users/{user}/orders/{order}/item/{item}', 'OrderlineController@destroy')->name('delete_item');
 
+// admin route
+Route::get('/admin/{admin}', 'AdminController@index');
+
 Auth::routes();

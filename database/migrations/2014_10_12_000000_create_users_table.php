@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('zip');
             $table->rememberToken();
             $table->timestamps();
+            $table->boolean('admin')->default(false);
         });
     }
 
