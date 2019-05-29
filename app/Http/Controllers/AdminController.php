@@ -15,6 +15,8 @@ class AdminController extends Controller
         if(isset($_GET['page'])) {
             $query = $_GET['page'];
         }
-        return view('admin.index')->with(['query' => $query]);
+
+        $orders = Order::all();
+        return view('admin.index')->with(['query' => $query, 'orders' => $orders]);
     }
 }

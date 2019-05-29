@@ -2,11 +2,11 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
             @include('admin.sidebar')
         </div>
 
-        <div class="col-md-8">
+        <div class="col-md-9">
             @switch($query)
                 @case('category')
                     @include('admin.category')

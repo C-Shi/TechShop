@@ -14,6 +14,10 @@ class Order extends Model
         return $this->hasMany('App\OrderLine');
     }
 
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
+
     public function sum(){
         $products = $this->order_line;
         $sum = 0;
