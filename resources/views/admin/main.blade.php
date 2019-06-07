@@ -15,6 +15,24 @@ main
     {{-- profit statistic chart --}}
     <hr>
     profit statistical chart
+    <div class="row">
+        <div class="col-md-6 offset-md-2">
+            <canvas id="profit" width="200" height="200"></canvas>
+        </div>
+    </div>
+    @php
+        $profits = [];
+        foreach ($orders as $order) {
+            $month = substr($order->updated_at, 0, 7);
+
+            if (array_key_exists($month, $profits)) {
+                $profits[$month] += $order->sum();
+            } else {
+                $profits[$month] = $order->sum();
+            }
+        }
+    @endphp
+
 
     {{-- category and product distribution --}}
     <hr>
@@ -30,8 +48,8 @@ main
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
 <script>
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myPieChart = new Chart(ctx, {
+    var ctx1 = document.getElementById('myChart').getContext('2d');
+    var myPieChart = new Chart(ctx1, {
         type: 'pie',
         data: {
             labels: [@foreach($categories as $category) '{{ $category->name }}', @endforeach],
@@ -60,5 +78,27 @@ main
                 position: 'bottom'
             }
         }
+    });
+</script>
+
+<script>
+    var ctx2 = document.getElementById('profit').getContext('2d');
+    var myBarChart = new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            datasets: [{
+                label: [@foreach($profits as $month => $profit) '{{ $month }}', @endforeach],
+                data: [@foreach($profits as $month => $profit) '{{ $profit }}', @endforeach],
+                backgroundColor: [
+                'rgba(255, 99, 132, 0.7)',
+                'rgba(54, 162, 235, 0.7)',
+                'rgba(255, 206, 86, 0.7)',
+                'rgba(75, 192, 192, 0.7)',
+                'rgba(153, 102, 255, 0.7)',
+                'rgba(255, 159, 64, 0.7)'
+                ],
+            }]
+        },
+        options: undefined
     });
 </script>

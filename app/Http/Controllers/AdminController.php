@@ -28,11 +28,11 @@ class AdminController extends Controller
             case 'category':
                 break;
             default:
+                $orders = Order::all();
                 $categories = Category::select('categories.name', DB::Raw('COUNT(category_id) AS number'))->leftJoin('products', 'categories.id', '=', 'products.category_id')->groupBy('categories.name')->get();
                 // $categories = DB::select(DB::raw("SELECT categories.name, COUNT(category_id) FROM products LEFT JOIN categories ON categories.id = products.category_id GROUP BY category_id"));
         }
 
-        $orders = Order::all();
         return view('admin.index')->with([
             'query' => $query,
             'orders' => $orders,
